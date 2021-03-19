@@ -48,16 +48,16 @@ namespace HW_1_18_03_21.Repositories.ClientRepository
             Console.WriteLine("Введите ID человека каторый вы хотели изменит его данны!!!");
             Console.Write("ID: ");
             int ID = int.Parse(Console.ReadLine()); Console.Clear();
-            Client person = new Client();
-            Console.Write("LastName: "); person.LastName = Console.ReadLine();
-            Console.Write("FirstName: "); person.FirstName = Console.ReadLine();
-            Console.Write("BirthYear: "); person.BirthDate = DateTime.Parse(Console.ReadLine());
+            Client client = new Client();
+            Console.Write("LastName: "); client.LastName = Console.ReadLine();
+            Console.Write("FirstName: "); client.FirstName = Console.ReadLine();
+            Console.Write("BirthYear: "); client.BirthDate = DateTime.Parse(Console.ReadLine());
             try
             {
                 using (IDbConnection db = new SqlConnection(conString))
                 {
-                    var command = $"UPDATE CLients SET LastName = '{person.LastName}', FirstName = '{person.FirstName}',BirthDate ={person.BirthDate} WHERE Id = {ID}";
-                    db.Execute(command, person);
+                    var command = $"UPDATE CLients SET LastName = '{client.LastName}', FirstName = '{client.FirstName}',BirthDate ={client.BirthDate} WHERE Id = {ID}";
+                    db.Execute(command, client);
                     Console.WriteLine("Успешно изменено!");
                 }
             }
